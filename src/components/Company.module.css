@@ -1,0 +1,90 @@
+.company {
+  background: var(--paper);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(32px, 6vw, 110px);
+  align-items: end;
+}
+
+.statement {
+  max-width: 14ch;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 520px;
+}
+
+.media {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(20px, 3vw, 48px);
+  margin-top: clamp(64px, 9vw, 140px);
+}
+
+.tall {
+  aspect-ratio: 3 / 4;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 56px);
+  padding-top: clamp(0px, 10vw, 160px);
+}
+
+.wide {
+  aspect-ratio: 16 / 10;
+}
+
+.principles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.principles li {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.principles h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.1;
+  margin: 14px 0 10px;
+}
+
+.principles p {
+  font-size: 14.5px;
+}
+
+.num {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+}
+
+@media (max-width: 900px) {
+  .grid,
+  .media {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    padding-top: 0;
+  }
+
+  .principles {
+    grid-template-columns: 1fr;
+  }
+}

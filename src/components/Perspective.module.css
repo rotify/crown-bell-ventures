@@ -1,0 +1,215 @@
+.perspective {
+  position: relative;
+  height: 560vh;
+  background: var(--night);
+  color: var(--paper);
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ---------- Fluted glass ---------- */
+
+.glass {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  filter: blur(6px) saturate(0.85) brightness(0.55);
+  transform: scale(1.04);
+}
+
+.strip {
+  --w: calc(100vw / var(--n));
+  flex: 1;
+  height: 100%;
+  background-size: 118vw 118vh;
+  background-repeat: no-repeat;
+  /* each flute shows its slice of the photo, shifted to fake refraction */
+  background-position: calc(var(--i) * var(--w) * -1 - 9vw + var(--k) * 34px + (var(--i) - var(--n) / 2) * -1.6px) -9vh;
+  transition: background-image 1.2s var(--ease);
+  position: relative;
+}
+
+.strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.02) 30%,
+    rgba(0, 0, 0, 0.12) 70%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+}
+
+.glassShade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(90% 70% at 70% 50%, transparent 0%, rgba(14, 13, 12, 0.55) 100%),
+    linear-gradient(90deg, rgba(14, 13, 12, 0.75) 0%, rgba(14, 13, 12, 0.1) 55%);
+}
+
+/* ---------- Copy ---------- */
+
+.top {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--header-h) + 18px);
+  left: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  color: rgba(243, 240, 233, 0.75);
+}
+
+.intro {
+  position: absolute;
+  z-index: 3;
+  left: var(--gutter);
+  top: 50%;
+  translate: 0 -50%;
+  max-width: 40vw;
+}
+
+.sub {
+  color: var(--brass-light);
+  margin-bottom: 26px;
+}
+
+.lede {
+  margin-top: 26px;
+  max-width: 260px;
+  font-size: 16px;
+  color: rgba(243, 240, 233, 0.75);
+}
+
+/* ---------- Frame ---------- */
+
+.frame {
+  position: absolute;
+  z-index: 2;
+  inset: calc(var(--header-h) + 58px) var(--gutter) 96px;
+  overflow: hidden;
+  clip-path: inset(16% 5% 20% 46% round 6px);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
+  will-change: clip-path;
+}
+
+.frameInner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.shot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.06);
+  transition:
+    opacity 1.1s var(--ease),
+    transform 1.8s var(--ease);
+}
+
+.shot[data-active] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.img {
+  object-fit: cover;
+}
+
+.frameShade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(243, 240, 233, 0.16);
+  background: linear-gradient(0deg, rgba(14, 13, 12, 0.35) 0%, transparent 30%);
+}
+
+/* ---------- Bottom bar ---------- */
+
+.bar {
+  position: absolute;
+  z-index: 3;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 30px;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  color: rgba(243, 240, 233, 0.8);
+}
+
+.count {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.caption {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2vw, 30px);
+  color: var(--paper);
+  animation: rise 0.8s var(--ease);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.track {
+  height: 1px;
+  background: var(--line-light);
+  overflow: hidden;
+}
+
+.track span {
+  display: block;
+  height: 100%;
+  background: var(--brass-light);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@media (max-width: 800px) {
+  .perspective {
+    height: 460vh;
+  }
+
+  .intro {
+    top: auto;
+    bottom: 120px;
+    translate: none;
+    max-width: none;
+    right: var(--gutter);
+  }
+
+  .frame {
+    clip-path: inset(6% 0% 52% 30% round 6px);
+  }
+
+  .bar {
+    grid-template-columns: auto 1fr;
+  }
+
+  .track,
+  .bar a {
+    display: none;
+  }
+
+  .top a {
+    display: none;
+  }
+}

@@ -1,0 +1,164 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: rgba(14, 13, 12, 0.97);
+  color: var(--paper);
+  animation: fade 0.45s var(--ease);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px var(--gutter);
+  color: rgba(243, 240, 233, 0.7);
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-light);
+  font-size: 13px;
+  color: var(--paper);
+  transition: background-color 0.3s;
+}
+
+.ctrl:hover {
+  background: rgba(243, 240, 233, 0.08);
+}
+
+.figure {
+  position: relative;
+  margin: 0 calc(var(--gutter) + 56px) 28px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 18px;
+  min-height: 0;
+}
+
+.imageWrap {
+  position: relative;
+  min-height: 0;
+  animation: in 0.7s var(--ease);
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
+.image {
+  object-fit: contain;
+}
+
+.caption {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  color: rgba(243, 240, 233, 0.7);
+}
+
+.count {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--paper);
+  margin-right: auto;
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 1px;
+  background: var(--brass-light);
+  transform-origin: left;
+  animation: grow linear forwards;
+}
+
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  border-radius: 50%;
+  border: 1px solid var(--line-light);
+  display: grid;
+  place-items: center;
+  transition: background-color 0.3s;
+}
+
+.nav:hover {
+  background: rgba(243, 240, 233, 0.1);
+}
+
+.prev {
+  left: calc(var(--gutter) - 12px);
+}
+
+.next {
+  right: calc(var(--gutter) - 12px);
+}
+
+@media (max-width: 700px) {
+  .figure {
+    margin-inline: 16px;
+  }
+
+  .nav {
+    top: auto;
+    bottom: 24px;
+    margin: 0;
+  }
+
+  .prev {
+    left: auto;
+    right: 80px;
+  }
+
+  .next {
+    right: 16px;
+  }
+
+  .caption {
+    padding-right: 140px;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+
+  .ctrl span {
+    display: none;
+  }
+}

@@ -1,0 +1,128 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 80% at 50% 30%, #2a2823 0%, var(--night) 60%),
+    var(--night);
+  color: var(--paper);
+  will-change: clip-path;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+  padding: 24px;
+}
+
+.eyebrow {
+  color: rgba(243, 240, 233, 0.6);
+}
+
+.mark {
+  color: var(--brass-light);
+}
+
+.name {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.45em;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(40px, 8vw, 116px);
+  letter-spacing: 0.22em;
+  line-height: 1;
+  margin-right: -0.22em;
+  overflow: hidden;
+  padding: 0.08em 0;
+}
+
+.word {
+  display: inline-flex;
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.letter {
+  display: inline-block;
+}
+
+/* Light sweep across the name */
+.shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 244, 222, 0.55) 50%, transparent 65%);
+  mix-blend-mode: overlay;
+  transform: translateX(-120%);
+}
+
+.sweep .shine {
+  animation: sweep 2.2s cubic-bezier(0.2, 0.55, 0.35, 1) forwards;
+}
+
+@keyframes sweep {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(243, 240, 233, 0.75);
+}
+
+.rule {
+  width: 48px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.taglineText {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+}
+
+.skip {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 32px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(243, 240, 233, 0.6);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(243, 240, 233, 0.25);
+  transition: color 0.3s;
+}
+
+.skip:hover {
+  color: var(--paper);
+}
+
+@media (max-width: 600px) {
+  .name {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1em;
+  }
+
+  .tagline {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
