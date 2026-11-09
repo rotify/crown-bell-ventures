@@ -24,6 +24,7 @@
 
 .header[data-dark] {
   color: var(--paper);
+  --logo-accent: var(--brass-light);
 }
 
 .header[data-dark][data-scrolled] {
@@ -33,6 +34,7 @@
 
 .header[data-open] {
   color: var(--paper);
+  --logo-accent: var(--brass-light);
   background: transparent;
   border-color: transparent;
   backdrop-filter: none;

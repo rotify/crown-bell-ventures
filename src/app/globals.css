@@ -15,6 +15,7 @@
   --brass-light: #c9a979;
   --line: rgba(35, 35, 31, 0.14);
   --line-light: rgba(243, 240, 233, 0.18);
+  --logo-accent: var(--brass);
 
   /* Type */
   --serif: "Instrument Serif", Georgia, "Times New Roman", serif;

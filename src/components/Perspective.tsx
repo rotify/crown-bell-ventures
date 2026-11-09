@@ -12,7 +12,7 @@ const STRIPS = 26;
 /** Share of the scroll used to open the frame before the photos start changing. */
 const OPEN_SHARE = 0.22;
 
-const small = (src: string) => src.replace("w=2400", "w=1000");
+const small = (src: string) => src.replace("w=2400", "w=900").replace("q=80", "q=60");
 
 /**
  * The "cinema" chapter. A framed photo sits on a fluted-glass backdrop,

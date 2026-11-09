@@ -102,6 +102,8 @@
 
 .note {
   justify-self: end;
+  /* keep clear of the floating Animations button */
+  margin-right: 120px;
 }
 
 .cue {

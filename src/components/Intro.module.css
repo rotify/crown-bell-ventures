@@ -4,6 +4,7 @@
   z-index: 100;
   display: grid;
   place-items: center;
+  --logo-accent: var(--brass-light);
   background:
     radial-gradient(120% 80% at 50% 30%, #2a2823 0%, var(--night) 60%),
     var(--night);
@@ -25,7 +26,8 @@
 }
 
 .mark {
-  color: var(--brass-light);
+  color: var(--paper);
+  overflow: visible;
 }
 
 .name {
@@ -34,12 +36,12 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0 0.45em;
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: clamp(40px, 8vw, 116px);
-  letter-spacing: 0.22em;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 9vw, 128px);
+  letter-spacing: 0.1em;
   line-height: 1;
-  margin-right: -0.22em;
+  margin-right: -0.1em;
   overflow: hidden;
   padding: 0.08em 0;
 }

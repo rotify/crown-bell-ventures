@@ -79,12 +79,23 @@ export default function Contact() {
             <div>
               <dt>Phone</dt>
               <dd>
-                <a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a>
+                <a href={`tel:${contact.phoneHref}`}>{contact.phone}</a>
               </dd>
             </div>
             <div>
               <dt>Office</dt>
-              <dd>{contact.address}</dd>
+              <dd>
+                <a href={contact.mapUrl} target="_blank" rel="noreferrer">
+                  {contact.addressLines.map((line) => (
+                    <span key={line} style={{ display: "block" }}>
+                      {line}
+                    </span>
+                  ))}
+                </a>
+                <a href={contact.mapUrl} target="_blank" rel="noreferrer" className={styles.directions}>
+                  Get directions ↗
+                </a>
+              </dd>
             </div>
             <div>
               <dt>Hours</dt>

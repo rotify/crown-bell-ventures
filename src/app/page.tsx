@@ -2,6 +2,7 @@ import Intro from "@/components/Intro";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Company from "@/components/Company";
+import MissionVision from "@/components/MissionVision";
 import PhotoJourney from "@/components/PhotoJourney";
 import Perspective from "@/components/Perspective";
 import Essence from "@/components/Essence";
@@ -21,6 +22,7 @@ export default function Home() {
       <main>
         <Hero />
         <Company />
+        <MissionVision />
         <PhotoJourney {...journeys.interiors} next={{ href: "#perspective", label: "Next chapter" }} />
         <Perspective />
         <Essence />

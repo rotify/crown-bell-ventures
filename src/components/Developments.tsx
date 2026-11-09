@@ -10,11 +10,15 @@ import styles from "./Developments.module.css";
 
 export const ENQUIRE_EVENT = "cbv:enquire";
 
-const filters: ("All" | DevelopmentStatus)[] = ["All", "Selling now", "Off-plan", "Completed"];
+const statusFilters: ("All" | DevelopmentStatus)[] = ["All", "Selling now", "Off-plan", "Completed"];
+const cityFilters = ["All cities", "Lagos", "Abuja"] as const;
 
 export default function Developments() {
-  const [filter, setFilter] = useState<(typeof filters)[number]>("All");
-  const list = filter === "All" ? developments : developments.filter((d) => d.status === filter);
+  const [filter, setFilter] = useState<(typeof statusFilters)[number]>("All");
+  const [city, setCity] = useState<(typeof cityFilters)[number]>("All cities");
+  const list = developments.filter(
+    (d) => (filter === "All" || d.status === filter) && (city === "All cities" || d.city === city),
+  );
 
   const enquire = (name: string) => {
     window.dispatchEvent(new CustomEvent(ENQUIRE_EVENT, { detail: name }));
@@ -34,25 +38,39 @@ export default function Developments() {
         </Reveal>
         <Reveal className={styles.intro} delay={0.1}>
           <p className="lede">
-            A growing portfolio of residences, each chosen for its location and finished to the same standard.
+            Homes and land across Lagos and Abuja, each with a verified title and finished to the same standard.
           </p>
-          <div className="chips" role="group" aria-label="Filter developments">
-            {filters.map((f) => (
-              <button key={f} className="chip" aria-pressed={filter === f} onClick={() => setFilter(f)}>
-                {f}
-              </button>
-            ))}
+          <div className={styles.filters}>
+            <div className="chips" role="group" aria-label="Filter by status">
+              {statusFilters.map((f) => (
+                <button key={f} className="chip" aria-pressed={filter === f} onClick={() => setFilter(f)}>
+                  {f}
+                </button>
+              ))}
+            </div>
+            <div className="chips" role="group" aria-label="Filter by city">
+              {cityFilters.map((c) => (
+                <button key={c} className="chip" aria-pressed={city === c} onClick={() => setCity(c)}>
+                  {c}
+                </button>
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>
+
+      {list.length === 0 && <p className={`muted ${styles.empty}`}>No developments match those filters yet.</p>}
 
       <ul className={styles.grid}>
         {list.map((d, i) => (
           <li key={d.slug} className={styles.card} style={{ animationDelay: `${i * 0.08}s` }}>
             <div className={`frame ${styles.media}`}>
               <Image src={d.image} alt={`${d.name}, ${d.location}`} fill sizes="(max-width: 800px) 100vw, 50vw" />
-              <span className={styles.status} data-status={d.status}>
-                {d.status}
+              <span className={styles.badges}>
+                <span className={styles.status} data-status={d.status}>
+                  {d.status}
+                </span>
+                {d.paymentPlan && <span className={styles.status}>Payment plan</span>}
               </span>
             </div>
             <div className={styles.meta}>
@@ -69,8 +87,12 @@ export default function Developments() {
                 <dd>{d.type}</dd>
               </div>
               <div>
-                <dt>Homes</dt>
+                <dt>{d.type === "Serviced plots" ? "Plot sizes" : "Homes"}</dt>
                 <dd>{d.bedrooms}</dd>
+              </div>
+              <div>
+                <dt>Title</dt>
+                <dd>{d.title}</dd>
               </div>
               <div>
                 <dt>Price</dt>

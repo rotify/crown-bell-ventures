@@ -60,6 +60,15 @@
   margin: 0;
 }
 
+.directions {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass-light);
+}
+
 .details a:hover {
   color: var(--brass-light);
 }

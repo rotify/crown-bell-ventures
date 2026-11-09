@@ -57,7 +57,10 @@ export default function Intro() {
     } else {
       timeline
         .set(el, { clipPath: "inset(0% 0% 0% 0%)", opacity: 1 })
-        .fromTo(q("[data-draw]"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, stagger: 0.18, ease: "power2.inOut" })
+        .from(q('[data-part="bell"]'), { y: 18, opacity: 0, duration: 1.1, ease: "power3.out" }, 0)
+        .fromTo(q("[data-draw]"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, 0.3)
+        .from(q('[data-part="rim"] circle'), { scale: 0, transformOrigin: "50% 50%", duration: 0.7, ease: "back.out(2)" }, 0.9)
+        .from(q('[data-part="crown"]'), { y: -22, opacity: 0, duration: 1, ease: "bounce.out" }, 0.75)
         .from(q(`.${styles.eyebrow}`), { y: 14, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.2)
         .from(q(`.${styles.letter}`), { yPercent: 110, duration: 1.1, stagger: 0.035, ease: "power4.out" }, 0.55)
         .add(() => el.classList.add(styles.sweep), 1.1)
@@ -75,13 +78,13 @@ export default function Intro() {
 
   if (!visible) return null;
 
-  const words = brand.short.toUpperCase().split(" ");
+  const words = ["CROWNBELL"];
 
   return (
     <div ref={root} className={styles.intro} role="dialog" aria-label={`${brand.name} introduction`}>
       <div className={styles.inner}>
         <p className={`eyebrow ${styles.eyebrow}`}>{brand.name} presents</p>
-        <LogoMark size={64} className={styles.mark} />
+        <LogoMark size={96} className={styles.mark} />
         <h2 className={styles.name} aria-label={brand.name}>
           {words.map((word, wi) => (
             <span key={word} className={styles.word} aria-hidden>
@@ -95,7 +98,7 @@ export default function Intro() {
           <span className={styles.shine} aria-hidden />
         </h2>
         <p className={styles.tagline}>
-          <span className="eyebrow">Ventures</span>
+          <span className="eyebrow">Ventures Limited</span>
           <span className={styles.rule} />
           <span className={styles.taglineText}>{brand.tagline}</span>
         </p>

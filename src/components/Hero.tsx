@@ -57,7 +57,7 @@ export default function Hero() {
         <div className={styles.media}>
           <Image
             src={photos.heroDay}
-            alt="Modern home with warm lights among the trees"
+            alt="The Lekki–Ikoyi Link Bridge over the Lagos lagoon"
             fill
             preload
             sizes="100vw"
@@ -91,7 +91,7 @@ export default function Hero() {
         </div>
 
         <p className={`display h-md ${styles.after}`}>
-          Day or night, <em>it holds its own.</em>
+          Day or night, <em>Lagos is home.</em>
         </p>
 
         <div className={styles.bottom}>

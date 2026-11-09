@@ -28,8 +28,14 @@ export default function Footer() {
         </nav>
         <div className={styles.contact}>
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
-          <a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a>
-          <span>{brand.city}</span>
+          <a href={`tel:${contact.phoneHref}`}>{contact.phone}</a>
+          <a href={contact.mapUrl} target="_blank" rel="noreferrer">
+            {contact.addressLines.map((line) => (
+              <span key={line} style={{ display: "block" }}>
+                {line}
+              </span>
+            ))}
+          </a>
         </div>
       </div>
 

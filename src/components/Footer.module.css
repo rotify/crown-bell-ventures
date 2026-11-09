@@ -1,4 +1,5 @@
 .footer {
+  --logo-accent: var(--brass-light);
   background: var(--ink-2);
   color: var(--paper);
   padding-top: clamp(72px, 8vw, 120px);

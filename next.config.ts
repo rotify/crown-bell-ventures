@@ -8,8 +8,9 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   images: {
-    // Placeholder photography is served from Unsplash until real project photos are ready.
-    // Once you move images into /public, you can remove this.
+    // Unsplash resizes images itself, so a custom loader requests the right size straight from it.
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
 };

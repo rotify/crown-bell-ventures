@@ -26,9 +26,9 @@ export default function Company() {
       </div>
 
       <div className={styles.media}>
-        <Parallax src={photos.exteriorWood} alt="Timber and concrete facade" className={styles.tall} sizes="(max-width: 800px) 100vw, 40vw" />
+        <Parallax src={photos.modernFacade} alt="Modern Lagos home facade" className={styles.tall} sizes="(max-width: 800px) 100vw, 40vw" />
         <div className={styles.side}>
-          <Parallax src={photos.livingStairs} alt="Double-height living room" className={styles.wide} sizes="(max-width: 800px) 100vw, 50vw" amount={16} />
+          <Parallax src={photos.lagosAerial} alt="Aerial view of Lagos by the water" className={styles.wide} sizes="(max-width: 800px) 100vw, 50vw" amount={16} />
           <Reveal as="ol" className={styles.principles} stagger={0.1}>
             {company.principles.map((p, i) => (
               <li key={p.title}>

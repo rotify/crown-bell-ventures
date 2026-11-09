@@ -18,7 +18,7 @@ export type Photo = {
   category?: ExploreCategory;
 };
 
-export type ExploreCategory = "Interiors" | "Exteriors" | "Living" | "Kitchens & baths";
+export type ExploreCategory = "Interiors" | "Exteriors" | "Living" | "Kitchens & baths" | "Neighbourhoods";
 
 /* ---------- Brand ---------- */
 
@@ -26,24 +26,27 @@ export const brand = {
   name: "Crown Bell Ventures",
   short: "Crown Bell",
   tagline: "A new standard for living well.",
-  // PLACEHOLDER: confirm the company's base city
-  city: "Lagos, Nigeria",
+  city: "Ajah, Lagos",
+  country: "Nigeria",
 };
 
+const officeAddress = "Shop 9, Fantasy E-Plaza, Ekotedo Street, Addo, Ajah, Eti-Osa, Lagos State";
+
 export const contact = {
-  // PLACEHOLDER: replace with the real WhatsApp number in international format, digits only
-  whatsapp: "2340000000000",
-  // PLACEHOLDER
-  phone: "+234 000 000 0000",
-  // PLACEHOLDER
-  email: "hello@crownbellventures.com",
-  // PLACEHOLDER
-  address: "Lekki Phase 1, Lagos",
+  // International format, digits only. Assumed to be the same line as the phone number; change if WhatsApp is on another line.
+  whatsapp: "2348060569282",
+  phone: "0806 056 9282",
+  phoneHref: "+2348060569282",
+  email: "crownbellventures@gmail.com",
+  address: officeAddress,
+  addressLines: ["Shop 9, Fantasy E-Plaza", "Ekotedo Street, Addo", "Ajah, Eti-Osa, Lagos State"],
+  mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress)}`,
+  // PLACEHOLDER: confirm office hours
   hours: "Mon – Sat · 9:00 – 18:00",
 };
 
 export const nav = [
-  { href: "#company", label: "The company" },
+  { href: "#company", label: "About" },
   { href: "#perspective", label: "Perspective" },
   { href: "#essence", label: "Essence" },
   { href: "#developments", label: "Developments" },
@@ -52,11 +55,49 @@ export const nav = [
   { href: "#contact", label: "Contact" },
 ];
 
-/* ---------- Photography (PLACEHOLDER — Unsplash) ---------- */
+/* ---------- Photography (PLACEHOLDER — Unsplash) ----------
+ * Nigerian photos (Lagos) are used wherever a suitable free image exists.
+ * Interiors are still generic stock until the client's own photos arrive.
+ */
 
 export const photos = {
-  heroDay: unsplash("1600585154340-be6161a56a0c"),
-  heroNight: unsplash("1600585154526-990dced4db0d"),
+  // Lagos / Nigeria
+  heroDay: unsplash("1765475467677-579353b25ce0"), // Lekki–Ikoyi Link Bridge, aerial by day
+  heroNight: unsplash("1648023200201-8fcede127835"), // Lekki–Ikoyi Link Bridge at night
+  estateCourtyard: unsplash("1745725427804-4d94df0c5eb7"),
+  ikoyiTower: unsplash("1543414347-1c348021f279"),
+  modernTerraces: unsplash("1628144688607-c373d8e3f31b"),
+  apartmentBeige: unsplash("1531300365552-da5abe58a725"),
+  estateStreet: unsplash("1752622176337-5d9315e2df6e"),
+  whiteVilla: unsplash("1779487552425-65861889810b"),
+  modernFacade: unsplash("1643297551340-19d8ad4f20ad"),
+  lagosAerial: unsplash("1744907895363-d351aa6019ef"),
+  apartmentColour: unsplash("1561848277-141e09d45928"),
+  leafyLagos: unsplash("1639774275491-71d62502a4e0"),
+  apartmentsBlue: unsplash("1779487581808-35371cd98732"),
+  glassTowers: unsplash("1741900024959-c406f5e4eaa1"),
+  lagosSkyline: unsplash("1749058388308-744fdc8991ed"),
+  lagosSunset: unsplash("1569706971306-de5d78f6418e"),
+  kitchenMarble: unsplash("1633119712778-30d94755de54"),
+  kitchenMarbleTwo: unsplash("1633119713175-c53c29479984"),
+  bungalowLawn: unsplash("1788024171338-e5b007e08bfb"),
+  lagosCity: unsplash("1594538756542-8c88bda491c5"),
+
+  // Nigerian / African-styled interiors
+  loungeWarm: unsplash("1779218404492-0b0546062158"),
+  loungeCosy: unsplash("1779218404505-6e669b205030"),
+  stairArt: unsplash("1770731960107-86d5553af426"),
+  decorTable: unsplash("1781341031120-911224d4bdbd"),
+  wovenWall: unsplash("1766204176809-313373b37ca5"),
+  patternChairs: unsplash("1779218449621-d7d6a55777ef"),
+  livingNaija: unsplash("1673563932832-a0c9e0ed26f8"),
+  livingNaijaTwo: unsplash("1673563932782-28daf64ff066"),
+  diningNaija: unsplash("1659622543730-b393861b0c35"),
+  livingArt: unsplash("1695684720698-3691d44a7c2e"),
+
+  // Generic interiors and homes
+  modernHouseEvening: unsplash("1600585154340-be6161a56a0c"),
+  facadeNight: unsplash("1600585154526-990dced4db0d"),
   livingWood: unsplash("1600607687939-ce8a6c25118c"),
   exteriorWood: unsplash("1600566753190-17f0baa2a6c3"),
   livingGallery: unsplash("1600210492486-724fe5c67fb0"),
@@ -88,12 +129,12 @@ export const photos = {
 /* ---------- Hero ---------- */
 
 export const hero = {
-  eyebrow: "Crown Bell Ventures · Real estate",
+  eyebrow: "Crown Bell Ventures · Nigerian real estate",
   titleTop: "Your next",
   titleEm: "address.",
   intro:
-    "Homes, developments and investments shaped with care, built to hold their value and the life you build inside them.",
-  location: brand.city,
+    "Homes, land and investments across Lagos and Abuja, with clear titles and finishes built to hold their value.",
+  location: "Ajah · Lagos · Nigeria",
 };
 
 /* ---------- 01 · The company ---------- */
@@ -104,14 +145,31 @@ export const company = {
   statement: "We build places people are proud to",
   statementEm: "come home to.",
   body: [
-    "Crown Bell Ventures is a real estate company working across development, sales, leasing and property management. We look for good land, design homes around how people actually live, and stay with our clients long after the keys change hands.",
-    "Every project starts with the same questions: will it stand the test of time, will it be easy to live in, and will it be worth more tomorrow than it is today?",
+    "Crown Bell Ventures is a Nigerian real estate company based in Ajah, Lagos. We develop, sell, let and manage homes and land across Lagos and Abuja, and we stay with our clients long after the keys change hands.",
+    "We know what buyers here worry about: genuine titles, honest pricing, steady power and water, and builders who finish on time. Every project starts by getting those right.",
   ],
   principles: [
     { title: "Considered design", text: "Light, proportion and materials chosen for daily life, not just the brochure." },
-    { title: "Honest dealings", text: "Clear titles, clear pricing and clear timelines from the first conversation." },
+    { title: "Honest dealings", text: "Verified titles, clear pricing and realistic timelines from the first conversation." },
     { title: "Lasting value", text: "Locations and specifications selected to protect what you invest." },
   ],
+};
+
+/* ---------- Mission & vision ---------- */
+
+export const missionVision = {
+  mission: {
+    label: "Our mission",
+    lead: "To make owning property in Nigeria",
+    leadEm: "simple, safe and rewarding.",
+    text: "We deliver well-built homes and genuine land with verified titles, fair pricing and flexible payment plans, so families, professionals and investors at home and in the diaspora can buy with confidence.",
+  },
+  vision: {
+    label: "Our vision",
+    lead: "To be Nigeria's most",
+    leadEm: "trusted name in real estate.",
+    text: "A company known across Lagos, Abuja and beyond for homes that hold their value, communities people are proud of, and promises that are kept.",
+  },
 };
 
 /* ---------- Photo journeys (sticky galleries) ---------- */
@@ -123,10 +181,10 @@ export const journeys = {
     title: "Spaces made for",
     titleEm: "staying in.",
     items: [
-      { src: photos.livingWood, alt: "Living room with timber feature wall", title: "Time to stay", caption: "Open living, warm timber" },
-      { src: photos.livingStairs, alt: "Double-height living room with staircase", title: "Room to breathe", caption: "Double-height volume" },
-      { src: photos.kitchenIsland, alt: "Kitchen with a long island", title: "Gather here", caption: "Kitchen and island" },
-      { src: photos.livingGallery, alt: "Bright living room with gallery wall", title: "Natural light", caption: "Living room" },
+      { src: photos.loungeWarm, alt: "Warm lounge with sofas and African artwork", title: "Time to stay", caption: "Family lounge" },
+      { src: photos.livingNaija, alt: "Bright living room with framed art", title: "Room to breathe", caption: "Living room" },
+      { src: photos.kitchenMarble, alt: "Marble kitchen with pendant lights", title: "Gather here", caption: "Kitchen" },
+      { src: photos.stairArt, alt: "Wooden staircase with artwork", title: "Every detail", caption: "Staircase" },
       { src: photos.bedroomDark, alt: "Bedroom with dark panelled wall", title: "Quiet hours", caption: "Primary suite" },
       { src: photos.bathGrey, alt: "Grey stone bathroom", title: "A private ritual", caption: "Bathroom" },
     ] satisfies Photo[],
@@ -137,11 +195,11 @@ export const journeys = {
     title: "Life, taken",
     titleEm: "outside.",
     items: [
+      { src: photos.estateCourtyard, alt: "Estate courtyard with palm trees", title: "Gated and green", caption: "Estate courtyard" },
+      { src: photos.estateStreet, alt: "Quiet estate street lined with homes and palms", title: "Quiet streets", caption: "Interlocked estate road" },
       { src: photos.villaPoolTwo, alt: "Modern home with a long pool", title: "Water and light", caption: "Pool terrace" },
-      { src: photos.glassStairs, alt: "Glass staircase looking out to a pool", title: "Open to the view", caption: "Indoor–outdoor flow" },
+      { src: photos.bungalowLawn, alt: "Home with a wide lawn", title: "Room to grow", caption: "Garden" },
       { src: photos.housePool, alt: "Home with pool at dusk", title: "Evenings outside", caption: "Garden and pool" },
-      { src: photos.villaWhite, alt: "White villa with pool", title: "Sun-washed", caption: "Terrace" },
-      { src: photos.exteriorTrees, alt: "Modern house among trees", title: "Green edges", caption: "Landscaped garden" },
     ] satisfies Photo[],
   },
   living: {
@@ -150,10 +208,10 @@ export const journeys = {
     title: "Made for",
     titleEm: "good company.",
     items: [
-      { src: photos.diningGreen, alt: "Dining table with green chairs", title: "The long table", caption: "Dining" },
-      { src: photos.livingWarm, alt: "Warm living room", title: "Slow evenings", caption: "Lounge" },
-      { src: photos.livingBeige, alt: "Neutral living room with round mirrors", title: "Soft light", caption: "Family room" },
-      { src: photos.apartmentLiving, alt: "Apartment living area", title: "City living", caption: "Apartment" },
+      { src: photos.diningNaija, alt: "Dining room with table and chairs by the window", title: "The long table", caption: "Dining" },
+      { src: photos.loungeCosy, alt: "Cosy living room with patterned cushions", title: "Slow evenings", caption: "Lounge" },
+      { src: photos.livingNaijaTwo, alt: "Living room with a bowl of nuts on the table", title: "Soft light", caption: "Family room" },
+      { src: photos.patternChairs, alt: "Two chairs beneath a large patterned artwork", title: "Made for conversation", caption: "Sitting area" },
     ] satisfies Photo[],
   },
 };
@@ -167,14 +225,14 @@ export const perspective = {
   titleEm: "perspective.",
   lede: "See every space the way you will live in it.",
   frames: [
-    { src: photos.livingStairs, alt: "Living room with staircase", title: "Arrive and exhale" },
-    { src: photos.kitchenStone, alt: "Stone kitchen", title: "From kitchen to open air" },
+    { src: photos.loungeWarm, alt: "Warm lounge", title: "Arrive and exhale" },
+    { src: photos.kitchenMarbleTwo, alt: "Marble kitchen", title: "Kitchens that work hard" },
     { src: photos.glassStairs, alt: "Glass stairs facing pool", title: "Every step, a view" },
     { src: photos.bedroomWhite, alt: "White bedroom", title: "Rest, properly" },
     { src: photos.villaPool, alt: "Villa with pool", title: "Weekends at home" },
-    { src: photos.diningGreen, alt: "Dining room", title: "Room for everyone" },
+    { src: photos.diningNaija, alt: "Dining room", title: "Room for everyone" },
     { src: photos.bedroomSoft, alt: "Soft bedroom", title: "Morning light" },
-    { src: photos.houseWhite, alt: "White modern house", title: "Your next horizon" },
+    { src: photos.lagosSunset, alt: "Sunset over Lagos rooftops", title: "Your next horizon" },
   ] satisfies Photo[],
 };
 
@@ -191,21 +249,21 @@ export const essence = {
       label: "The vision",
       title: "We start with the view.",
       text: "Before a single wall goes up we study light, air and outlook, so every room earns its place.",
-      image: { src: photos.heroNight, alt: "Modern facade at night" },
+      image: { src: photos.lagosSunset, alt: "Sunset over Lagos" },
     },
     {
       key: "craft",
       label: "The craft",
       title: "Details you can feel.",
       text: "Solid materials, careful finishes and builders who take pride in the last five percent.",
-      image: { src: photos.livingWood, alt: "Timber feature wall" },
+      image: { src: photos.wovenWall, alt: "Woven wall hangings and a potted palm" },
     },
     {
       key: "home",
       label: "The home",
       title: "Made to be lived in.",
       text: "Layouts that work for real families: storage where you need it, space where you gather.",
-      image: { src: photos.livingBeige, alt: "Calm living room" },
+      image: { src: photos.livingNaija, alt: "Calm living room" },
     },
   ],
 };
@@ -218,53 +276,96 @@ export type Development = {
   slug: string;
   name: string;
   location: string;
+  city: "Lagos" | "Abuja";
   status: DevelopmentStatus;
   type: string;
   bedrooms: string;
+  /** Title document, e.g. C of O, Governor's Consent */
+  title: string;
+  paymentPlan: boolean;
   summary: string;
   image: string;
 };
 
+// PLACEHOLDER: sample developments until Crown Bell Ventures confirms its real projects.
 export const developments: Development[] = [
+  {
+    slug: "addo-gardens",
+    name: "Addo Gardens",
+    location: "Addo, Ajah, Lagos",
+    city: "Lagos",
+    status: "Selling now",
+    type: "Semi-detached duplexes",
+    bedrooms: "3 & 4 bedrooms + BQ",
+    title: "Governor's Consent",
+    paymentPlan: true,
+    summary: "A gated, family-sized estate minutes from our office, with good drainage, street lighting and 24-hour security.",
+    image: photos.estateCourtyard,
+  },
   {
     slug: "crown-residences",
     name: "The Crown Residences",
     location: "Ikoyi, Lagos",
+    city: "Lagos",
     status: "Selling now",
-    type: "Apartments",
+    type: "Luxury apartments",
     bedrooms: "3 & 4 bedrooms",
-    summary: "Light-filled apartments with private terraces and a shared rooftop garden.",
-    image: photos.heroDay,
+    title: "Governor's Consent",
+    paymentPlan: false,
+    summary: "Light-filled apartments with private terraces, a rooftop pool and full-time power backup.",
+    image: photos.ikoyiTower,
   },
   {
     slug: "bellview-terraces",
     name: "Bellview Terraces",
     location: "Lekki Phase 1, Lagos",
+    city: "Lagos",
     status: "Off-plan",
-    type: "Terraced homes",
+    type: "Terraced duplexes",
     bedrooms: "4 bedrooms + BQ",
-    summary: "Family terraces arranged around a landscaped courtyard, minutes from the coast.",
-    image: photos.exteriorBrick,
+    title: "C of O",
+    paymentPlan: true,
+    summary: "Family terraces arranged around a landscaped courtyard, close to Admiralty Way and the coast.",
+    image: photos.modernTerraces,
   },
   {
     slug: "ventures-court",
     name: "Ventures Court",
-    location: "Ajah, Lagos",
+    location: "Sangotedo, Lagos",
+    city: "Lagos",
     status: "Off-plan",
     type: "Apartments",
     bedrooms: "2 & 3 bedrooms",
-    summary: "Smart, well-priced homes for first-time buyers and investors.",
-    image: photos.apartmentBlock,
+    title: "C of O",
+    paymentPlan: true,
+    summary: "Smart, well-priced flats for first-time buyers and investors along the Lekki–Epe corridor.",
+    image: photos.apartmentBeige,
   },
   {
-    slug: "harbour-house",
-    name: "Harbour House",
-    location: "Victoria Island, Lagos",
+    slug: "crown-haven",
+    name: "Crown Haven Estate",
+    location: "Ibeju-Lekki, Lagos",
+    city: "Lagos",
+    status: "Selling now",
+    type: "Serviced plots",
+    bedrooms: "300 – 600 sqm plots",
+    title: "Registered survey & deed",
+    paymentPlan: true,
+    summary: "Dry, buildable land near the Lekki Free Trade Zone and the Dangote refinery: buy now, build when you're ready.",
+    image: photos.estateStreet,
+  },
+  {
+    slug: "maitama-heights",
+    name: "Maitama Heights",
+    location: "Maitama, Abuja",
+    city: "Abuja",
     status: "Completed",
-    type: "Penthouses",
-    bedrooms: "4 & 5 bedrooms",
-    summary: "A small collection of penthouses with wraparound views and private pools.",
-    image: photos.villaPoolTwo,
+    type: "Detached duplexes",
+    bedrooms: "5 bedrooms + BQ",
+    title: "C of O",
+    paymentPlan: false,
+    summary: "A small collection of fully detached homes with private gardens in one of Abuja's most established districts.",
+    image: photos.whiteVilla,
   },
 ];
 
@@ -279,61 +380,71 @@ export const services = {
     {
       title: "Property development",
       text: "From land acquisition and design to construction and handover, delivered to a standard we are proud to sign.",
-      image: photos.exteriorWood,
+      image: photos.apartmentColour,
+    },
+    {
+      title: "Land sales & documentation",
+      text: "Verified plots with C of O, Governor's Consent or registered survey, plus help perfecting your title with the Lands Registry.",
+      image: photos.leafyLagos,
     },
     {
       title: "Sales & acquisition",
-      text: "Helping buyers find the right home or investment, with verified titles and transparent pricing.",
-      image: photos.houseWhite,
+      text: "Helping buyers at home and in the diaspora find the right home or investment, with transparent pricing and payment plans.",
+      image: photos.bungalowLawn,
     },
     {
       title: "Leasing & letting",
-      text: "Matching quality homes with quality tenants, and handling the paperwork in between.",
-      image: photos.apartmentLiving,
+      text: "Matching quality homes with vetted tenants, from agreements and rent collection to renewals.",
+      image: photos.apartmentsBlue,
     },
     {
       title: "Property management",
-      text: "Maintenance, collections and care that keeps buildings in top condition and owners stress-free.",
-      image: photos.towers,
+      text: "Facility management, power and water maintenance, service charges and repairs, so owners stay stress-free.",
+      image: photos.glassTowers,
     },
     {
       title: "Real estate advisory",
-      text: "Clear-headed advice on where, when and how to invest, backed by local market knowledge.",
-      image: photos.livingGallery,
+      text: "Clear-headed advice on where, when and how to invest in Nigerian property, backed by on-the-ground market knowledge.",
+      image: photos.lagosSkyline,
     },
   ],
   process: [
     { step: "01", title: "Conversation", text: "We listen to what you need: budget, location, timeline." },
     { step: "02", title: "Curation", text: "A shortlist of homes or opportunities that genuinely fit." },
-    { step: "03", title: "Due diligence", text: "Titles, approvals and documentation checked properly." },
-    { step: "04", title: "Keys & beyond", text: "Handover, then ongoing support whenever you need us." },
+    { step: "03", title: "Due diligence", text: "Title search, survey and building approvals checked before you pay." },
+    { step: "04", title: "Keys & beyond", text: "Deed of assignment, handover, then ongoing support whenever you need us." },
   ],
 };
 
 /* ---------- 04 · Explore ---------- */
 
-export const exploreCategories: ExploreCategory[] = ["Interiors", "Exteriors", "Living", "Kitchens & baths"];
+export const exploreCategories: ExploreCategory[] = ["Interiors", "Exteriors", "Living", "Kitchens & baths", "Neighbourhoods"];
 
 export const explore: Photo[] = [
-  { src: photos.heroDay, alt: "Modern house at dusk", title: "Arrival", category: "Exteriors" },
-  { src: photos.livingWood, alt: "Timber living room", title: "Timber and light", category: "Interiors" },
-  { src: photos.kitchenIsland, alt: "Kitchen island", title: "The island", category: "Kitchens & baths" },
-  { src: photos.villaPoolTwo, alt: "Pool terrace", title: "Pool terrace", category: "Exteriors" },
-  { src: photos.diningGreen, alt: "Dining room", title: "Dining", category: "Living" },
+  { src: photos.estateCourtyard, alt: "Estate courtyard with palms", title: "Gated living", category: "Exteriors" },
+  { src: photos.loungeWarm, alt: "Warm lounge with African art", title: "Warm and welcoming", category: "Interiors" },
+  { src: photos.kitchenMarble, alt: "Marble kitchen", title: "The kitchen", category: "Kitchens & baths" },
+  { src: photos.heroDay, alt: "Lekki–Ikoyi Link Bridge from above", title: "Lekki–Ikoyi Link Bridge", category: "Neighbourhoods" },
+  { src: photos.diningNaija, alt: "Dining room", title: "Dining", category: "Living" },
+  { src: photos.modernTerraces, alt: "Modern terraced homes", title: "Modern terraces", category: "Exteriors" },
   { src: photos.bedroomDark, alt: "Dark bedroom", title: "Primary suite", category: "Interiors" },
-  { src: photos.exteriorTrees, alt: "House among trees", title: "Among the trees", category: "Exteriors" },
-  { src: photos.livingBeige, alt: "Family room", title: "Family room", category: "Living" },
+  { src: photos.lagosSkyline, alt: "Lagos skyline", title: "The Lagos skyline", category: "Neighbourhoods" },
+  { src: photos.livingNaijaTwo, alt: "Family room", title: "Family room", category: "Living" },
   { src: photos.bathGrey, alt: "Bathroom", title: "Stone bath", category: "Kitchens & baths" },
-  { src: photos.readingChair, alt: "Reading corner", title: "Reading corner", category: "Interiors" },
-  { src: photos.housePool, alt: "Garden pool", title: "Garden pool", category: "Exteriors" },
-  { src: photos.livingWarm, alt: "Warm lounge", title: "Lounge", category: "Living" },
-  { src: photos.kitchenWhite, alt: "White kitchen", title: "Clean lines", category: "Kitchens & baths" },
+  { src: photos.ikoyiTower, alt: "White residential tower", title: "Living up high", category: "Exteriors" },
+  { src: photos.decorTable, alt: "Patterned side table and decor", title: "A corner with character", category: "Interiors" },
+  { src: photos.estateStreet, alt: "Estate street with palm trees", title: "Quiet streets", category: "Neighbourhoods" },
+  { src: photos.loungeCosy, alt: "Cosy lounge", title: "Lounge", category: "Living" },
+  { src: photos.kitchenMarbleTwo, alt: "Marble kitchen with island", title: "Marble and steel", category: "Kitchens & baths" },
+  { src: photos.whiteVilla, alt: "Modern white home", title: "Clean lines", category: "Exteriors" },
   { src: photos.bedroomWhite, alt: "White bedroom", title: "Guest room", category: "Interiors" },
-  { src: photos.exteriorWood, alt: "Timber facade", title: "Timber facade", category: "Exteriors" },
-  { src: photos.apartmentLiving, alt: "Apartment living", title: "City apartment", category: "Living" },
-  { src: photos.kitchenStone, alt: "Stone kitchen", title: "Stone and steel", category: "Kitchens & baths" },
-  { src: photos.glassStairs, alt: "Glass staircase", title: "Glass and water", category: "Interiors" },
-  { src: photos.villaWhite, alt: "White villa", title: "White villa", category: "Exteriors" },
+  { src: photos.lagosSunset, alt: "Sunset over Lagos", title: "Evening over Lagos", category: "Neighbourhoods" },
+  { src: photos.livingArt, alt: "Living area with art and a dining table", title: "Art at home", category: "Living" },
+  { src: photos.villaPoolTwo, alt: "Pool terrace", title: "Pool terrace", category: "Exteriors" },
+  { src: photos.stairArt, alt: "Wooden staircase with artwork", title: "The staircase", category: "Interiors" },
+  { src: photos.heroNight, alt: "Lekki–Ikoyi Link Bridge at night", title: "Lagos after dark", category: "Neighbourhoods" },
+  { src: photos.wovenWall, alt: "Woven wall hangings", title: "Woven details", category: "Interiors" },
+  { src: photos.patternChairs, alt: "Chairs beneath patterned art", title: "Made for conversation", category: "Living" },
 ];
 
 /* ---------- Footer ---------- */
